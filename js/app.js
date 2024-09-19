@@ -10,15 +10,24 @@ function cargarEventListeners(){
 }
 
 function agregarCurso(e) {
-    
-    
-    if (target && target.classList.contains('agregar-carrito')) {
-        console.log(target.parentElement.parentElement)
+    e.preventDefault();
+    if (e.target.classList.contains('agregar-carrito')) {
+        
+        const cursoSeleccionado = e.target.parentElement.parentElement;
+        leerDatosCurso(cursoSeleccionado);
     }
     
 }
 
 
-function leerDatosCurso() {
+function leerDatosCurso(curso) {
     
+    const infoCurso = {
+        imagen: curso.querySelector('img').src,
+        titulo: curso.querySelector('h4').textContent,
+        precio: curso.querySelector('.precio span').textContent,
+        id: curso.querySelector('a').getAttribute('data-id'),
+        cantidad:1
+    }
+    console.log(infoCurso)
 }
