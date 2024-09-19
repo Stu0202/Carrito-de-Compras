@@ -31,7 +31,23 @@ function leerDatosCurso(curso) {
         id: curso.querySelector('a').getAttribute('data-id'),
         cantidad:1
     }
-    articulosCarrito = [...articulosCarrito,infoCurso]
+
+    const existe = articulosCarrito.some(curso => curso.id === infoCurso.id)
+    if(existe){
+        const cursos = articulosCarrito.map(curso => {
+            if(curso.id === infoCurso.id){
+                curso.cantidad++;
+                return curso;
+            }else{
+                return curso;
+            }
+        })
+        articulosCarrito = [...cursos]
+    }else{
+
+        articulosCarrito = [...articulosCarrito,infoCurso]
+    }
+
     carritoHTML();
 }
 
@@ -45,6 +61,8 @@ function carritoHTML(){
         const row = document.createElement('tr');
         row.innerHTML = `
         <td> <img src="${imagen}" width="100"> </td>
+
+        
         <td> ${titulo} </td>
         <td>${precio} </td>
         <td> ${cantidad} </td>
