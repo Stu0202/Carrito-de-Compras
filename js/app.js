@@ -41,21 +41,16 @@ function carritoHTML(){
     
 
 
-    articulosCarrito.forEach(({imagen,precio,titulo} ) => {
+    articulosCarrito.forEach(({imagen,precio,titulo,cantidad,id} ) => {
         const row = document.createElement('tr');
         row.innerHTML = `
-        <tr>
-            <img src="${imagen}">
-        </tr>
-        <tr>
-        ${titulo}
-        </tr>
-        <tr>
-        ${precio}
-        </tr>
-        <tr>
-        ${imagen}
-        </tr>
+        <td> <img src="${imagen}" width="100"> </td>
+        <td> ${titulo} </td>
+        <td>${precio} </td>
+        <td> ${cantidad} </td>
+        <td>
+        <a href="#" class="borrar-curso" data-id="${id}"> X </a>
+        </td>
         `
         contenedorCarrito.appendChild(row)
     })
